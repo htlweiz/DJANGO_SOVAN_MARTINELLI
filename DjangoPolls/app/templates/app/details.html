@@ -1,0 +1,18 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{poll.text}}</h2>
+<br />
+
+{% if error_message %}
+<p class="text-danger">{{error_message}}</p>
+{% endif %}
+
+<form action="{% url 'app:vote' poll.id %}" method="post">
+{% csrf_token %}
+    <br />
+    <button class="btn btn-primary" type="submit">EIN/AUS</button>
+</form>
+
+{% endblock %}
